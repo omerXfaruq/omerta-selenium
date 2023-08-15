@@ -40,7 +40,8 @@ while(True):
         driver.execute_script("arguments[0].click();", buttons[3])
 
         time.sleep(29)
-    except:
+    except Exception as ex:
+        print("exception occured", ex)
         time.sleep(29)
 
 #time.sleep(200)
