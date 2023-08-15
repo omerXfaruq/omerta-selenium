@@ -29,6 +29,7 @@ while(True):
 
         buttons = driver.find_elements(By.CSS_SELECTOR, '.btn.btn-red.btn-bold.btn-big')
         driver.execute_script("arguments[0].click();", buttons[4])
+        time.sleep(1)
             
         driver.get("https://omerta.com.tr/index.php#/?module=Cars")
         time.sleep(1)
@@ -39,10 +40,10 @@ while(True):
         buttons = driver.find_elements(By.CSS_SELECTOR, '.btn.btn-red.btn-bold.btn-big')
         driver.execute_script("arguments[0].click();", buttons[3])
 
-        time.sleep(29)
+        time.sleep(28)
     except Exception as ex:
         print("exception occured", ex)
-        time.sleep(29)
+        time.sleep(30)
 
 #time.sleep(200)
 
