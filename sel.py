@@ -3,7 +3,9 @@ from selenium.webdriver.common.by import By  # Import the By class
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains, Keys
+from selenium.webdriver.chrome.options import Options
 import time
+import sys
 
 def select_highest_car(driver):
     popup_elements = driver.find_elements(By.CLASS_NAME, "popup-box-wrapper")
@@ -26,7 +28,15 @@ def select_highest_car(driver):
         button = selected_element.find_element(By.CSS_SELECTOR, '.btn.btn-red.btn-bold.btn-big')
         driver.execute_script("arguments[0].click();", button)
 
-driver = webdriver.Chrome()
+
+
+if len(sys.argv) == 1:
+    driver = webdriver.Chrome()
+else:
+    chrome_options = Options()    
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(options=chrome_options)
+
 driver.get("https://omerta.com.tr/#/jail.php")
 login_link = driver.find_element(By.XPATH, "//a[@data-bs-target='#loginModal']")
 login_link.click()
@@ -34,7 +44,7 @@ time.sleep(1)
 ActionChains(driver).send_keys(Keys.TAB).perform()
 ActionChains(driver).send_keys("fmbslayer@gmail.com").perform()
 ActionChains(driver).send_keys(Keys.TAB).perform()
-ActionChains(driver).send_keys("yo123Aa3!*").perform()
+ActionChains(driver).send_keys("yo123Aa!*").perform()
 ActionChains(driver).send_keys(Keys.RETURN).perform()
 
 time.sleep(1)
